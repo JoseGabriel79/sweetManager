@@ -215,6 +215,7 @@ export default function VitrineScreen() {
                 const response = await fetch(
                     "https://nodejs-production-43c7.up.railway.app/produtos"
                 );
+                console.log(response);
 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
