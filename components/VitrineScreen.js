@@ -15,63 +15,63 @@ export default function VitrineScreen() {
     const [selectedItemUpdate, setSelectedItemUpdate] = useState(null);
     const [selectedItemDelete, setSelectedItemDelete] = useState(null);
 
-    const produto = [{
-        id: 1,
-        nome: "Bolo de Chocolate",
-        descricao: "Delicioso bolo de chocolate com cobertura de brigadeiro",
-        preco: 50.00,
-        imagem: "boloPadrao.png",
-        estoque: 7
-    }, {
-        id: 2,
-        nome: "Bolo de Morango",
-        descricao: "Bolo de morango com cobertura de chantilly",
-        preco: 60.00,
-        imagem: "boloPadrao.png",
-        estoque: 15
-    }, {
-        id: 2,
-        nome: "Bolo de Morango",
-        descricao: "Bolo de morango com cobertura de chantilly",
-        preco: 60.00,
-        imagem: "boloPadrao.png",
-        estoque: 7
-    }, {
-        id: 2,
-        nome: "Bolo de Morango",
-        descricao: "Bolo de morango com cobertura de chantilly",
-        preco: 60.00,
-        imagem: "boloPadrao.png",
-        estoque: 7
-    }, {
-        id: 2,
-        nome: "Bolo de Morango",
-        descricao: "Bolo de morango com cobertura de chantilly",
-        preco: 60.00,
-        imagem: "boloPadrao.png",
-        estoque: 7
-    }, {
-        id: 2,
-        nome: "Bolo de Morango",
-        descricao: "Bolo de morango com cobertura de chantilly",
-        preco: 60.00,
-        imagem: "boloPadrao.png",
-        estoque: 7
-    }, {
-        id: 2,
-        nome: "Bolo de Morango",
-        descricao: "Bolo de morango com cobertura de chantilly",
-        preco: 60.00,
-        imagem: "boloPadrao.png",
-        estoque: 7
-    }
-    ]
+    // const produto = [{
+    //     id: 1,
+    //     nome: "Bolo de Chocolate",
+    //     descricao: "Delicioso bolo de chocolate com cobertura de brigadeiro",
+    //     preco: 50.00,
+    //     imagem: "boloPadrao.png",
+    //     estoque: 7
+    // }, {
+    //     id: 2,
+    //     nome: "Bolo de Morango",
+    //     descricao: "Bolo de morango com cobertura de chantilly",
+    //     preco: 60.00,
+    //     imagem: "boloPadrao.png",
+    //     estoque: 15
+    // }, {
+    //     id: 2,
+    //     nome: "Bolo de Morango",
+    //     descricao: "Bolo de morango com cobertura de chantilly",
+    //     preco: 60.00,
+    //     imagem: "boloPadrao.png",
+    //     estoque: 7
+    // }, {
+    //     id: 2,
+    //     nome: "Bolo de Morango",
+    //     descricao: "Bolo de morango com cobertura de chantilly",
+    //     preco: 60.00,
+    //     imagem: "boloPadrao.png",
+    //     estoque: 7
+    // }, {
+    //     id: 2,
+    //     nome: "Bolo de Morango",
+    //     descricao: "Bolo de morango com cobertura de chantilly",
+    //     preco: 60.00,
+    //     imagem: "boloPadrao.png",
+    //     estoque: 7
+    // }, {
+    //     id: 2,
+    //     nome: "Bolo de Morango",
+    //     descricao: "Bolo de morango com cobertura de chantilly",
+    //     preco: 60.00,
+    //     imagem: "boloPadrao.png",
+    //     estoque: 7
+    // }, {
+    //     id: 2,
+    //     nome: "Bolo de Morango",
+    //     descricao: "Bolo de morango com cobertura de chantilly",
+    //     preco: 60.00,
+    //     imagem: "boloPadrao.png",
+    //     estoque: 7
+    // }
+    // ]
 
-    useEffect(() => {
-        setProdutos(produto);
-        setStatus("Conectado com sucesso!");
+    // useEffect(() => {
+    //     setProdutos(produto);
+    //     setStatus("Conectado com sucesso!");
 
-    }, []);
+    // }, []);
 
     function ModalProduto({ item, onClose }) {
         return (
@@ -209,32 +209,32 @@ export default function VitrineScreen() {
         )
     }
 
-    // useEffect(() => {
-    //     const fetchProdutos = async () => {
-    //         try {
-    //             const response = await fetch(
-    //                 "https://nodejs-production-43c7.up.railway.app/produtos"
-    //             );
+    useEffect(() => {
+        const fetchProdutos = async () => {
+            try {
+                const response = await fetch(
+                    "https://nodejs-production-43c7.up.railway.app/produtos"
+                );
 
-    //             if (!response.ok) {
-    //                 throw new Error(`HTTP error! status: ${response.status}`);
-    //             }
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
 
-    //             const data = await response.json();
+                const data = await response.json();
 
-    //             if (data.success) {
-    //                 setProdutos(data.produtos);
-    //                 setStatus("Conectado com sucesso!");
-    //             } else {
-    //                 setStatus("Erro no backend: " + JSON.stringify(data));
-    //             }
-    //         } catch (err) {
-    //             setStatus("Erro: " + err.message);
-    //         }
-    //     };
+                if (data.success) {
+                    setProdutos(data.produtos);
+                    setStatus("Conectado com sucesso!");
+                } else {
+                    setStatus("Erro no backend: " + JSON.stringify(data));
+                }
+            } catch (err) {
+                setStatus("Erro: " + err.message);
+            }
+        };
 
-    //     fetchProdutos();
-    // }, []);
+        fetchProdutos();
+    }, []);
 
     return (
         <ScrollView style={styles.container}>
