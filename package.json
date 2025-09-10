@@ -16,6 +16,7 @@
     "cors": "^2.8.5",
     "expo": "~53.0.22",
     "expo-status-bar": "~2.2.3",
+    "node": "^20.19.5",
     "node.js": "^0.0.1-security",
     "pool": "^0.4.1",
     "react": "19.0.0",
