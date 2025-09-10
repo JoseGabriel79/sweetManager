@@ -7,7 +7,7 @@ const app = express();
 
 // Configurando CORS
 // Permite apenas o frontend específico (mais seguro)
-app.use(cors({ origin: "https://sweetmanager-production.up.railway.app" }));
+app.use(cors());
 
 // Caso queira permitir qualquer origem (teste rápido), use:
 // app.use(cors());
